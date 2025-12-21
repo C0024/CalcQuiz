@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Calculus Quiz</title>
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                displayMath: [['$$', '$$']],
+                inlineMath: [['\\(', '\\)']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+
+    <!-- MathJax Library -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+   <div class="home" id="home">
+     <p>Ready For The Quiz?</p>
+    <button id="startBtn">Start</button>
+   </div>
+    <!-- ================= MAIN QUIZ CONTAINER ================= -->
+    <div class="hidden container" id="container">
+
+        <h1>Calculus Quiz</h1>
+
+        <!-- Controls -->
+        <div class="controls">
+
+            <div class="computerControl">
+                <button id="questionBtn">Question</button>
+                <button id="answerBtn">Answer</button>
+            </div>
+
+            <button id="mic">Mic (Say Answer)</button>
+
+            <button id="toggleFormula">Show / Hide Formula</button>
+            <button id="nextQuestionBtn">Next Question</button>
+            <button id="endBtn">End the Session</button>
+        </div>
+
+        <div class="board">
+
+            <!-- Status & Results -->
+            <div id="status">Status:</div>
+            <div id="result">Your Answer:</div>
+
+            <!-- Score Info -->
+            <div id="yourscore">Score: 0</div>
+            <div id="totalQuestion">Total Question:</div>
+            <div id="remainingQuestion">Remaining Question:</div>
+
+            <!-- Formula Section -->
+            <div class="formula">Formula:</div>
+            <div id="formulaContainer" class="hidden"></div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+    <!-- ================= MAIN SCRIPT ================= -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

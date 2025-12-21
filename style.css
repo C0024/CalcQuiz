@@ -1,0 +1,237 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* ================= BODY ================= */
+body {
+  position: relative;
+  max-height: 100vh;
+  background: radial-gradient(circle at top left, #6a00ff, transparent 40%),
+              radial-gradient(circle at bottom right, #9b5cff, transparent 40%),
+              linear-gradient(135deg, #0b0616, #12002a);
+  color: #eae6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  
+}
+
+/* ================= UTILITIES ================= */
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+/* ================= HOME SCREEN ================= */
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  padding: 2.5rem 3rem;
+}
+
+.home p {
+  font-size: clamp(2rem, 15vw, 6rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.home button {
+  width: clamp(150px, 35vw, 300px);
+  padding: 0.8rem 2.2rem;
+  border-radius: 999px;
+  border: none;
+  font-size: clamp(1rem, 3vw, 2rem);
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(135deg, #7a3cff, #b56cff);
+  transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+}
+
+.home button:hover {
+  transform: translateY(-2px);
+  border: solid 2px #cba6ff;
+}
+
+/* ================= MAIN CONTAINER ================= */
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  height: 90vh;
+ 
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+  margin: auto;
+  
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 1.5vw;
+  font-size: 6vw;
+  background: linear-gradient(135deg, #cba6ff, #8f5bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================= CONTROLS ================= */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6vw;
+  justify-content: center;
+  
+  margin-bottom: 1.5rem;
+}
+
+.controls button {
+  flex-wrap: wrap;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #2a164f, #3d1f73);
+  color: #eae6ff;
+  font-size: 1.8vw;
+  transition: all 0.2s ease;
+}
+
+.controls button:hover {
+  background: linear-gradient(135deg, #5f2dff, #9b5cff);
+  transform: translateY(-1px);
+}
+
+.controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.computerControl {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ================= BOARD ================= */
+.board {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  font-size: 1.8vw;
+  width: 70vw;
+  height:45vh;
+}
+
+#status,
+#result {
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#yourscore,
+#totalQuestion,
+#remainingQuestion {
+  opacity: 0.9;
+}
+
+/* ================= FORMULA ================= */
+.formula {
+  margin-top: 0.5rem;
+  color: #cbb4ff;
+}
+
+#formulaContainer {
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 14px;
+  padding: 1rem;
+  overflow-x: auto;
+  color: white;
+}
+
+/* MathJax SVG fix */
+mjx-container {
+  color: #ffffff !important;
+}
+
+/* ================= RESPONSIVE ================= */
+/* 
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .board{
+    flex-direction: column;
+  }
+
+  .container h1 {
+    font-size: 100vw;
+    width: 100vw; 
+  }
+
+ 
+} */
+/* 
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .board{
+    flex-direction: column;
+  }
+
+  .container h1 {
+    font-size: 100vw;
+    width: 100vw; 
+  }
+
+ 
+}
+
+@media (max-width: 480px) {
+  .controls button {
+    flex: 1 1 100%;
+  }
+
+  .home {
+    padding: 2rem;
+  }
+
+  .home p {
+    font-size: 2rem;
+  }
+
+  .home button {
+    width: 80%;
+    font-size: 1.5rem;
+  }
+} */
