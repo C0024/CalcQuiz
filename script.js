@@ -1097,6 +1097,21 @@ nextquestionBtn.addEventListener("click", (e) => {
   askQuestion();
 });
 
+startBtn.addEventListener("click", start);
+
+answerBtn.addEventListener("click", (e) => {
+  restrictClick(answerBtn, 6000);
+  speakText(currentQuestion.deriansword);
+  totalScore--;
+  //index++;
+  //remainQn--;
+  updateStatus(totalScore, remainQn);
+  askQuestion();
+});
+
+
+answerBtn.addEventListener("click",answer);
+
 endBtn.addEventListener("click", (e) => {
   reset();
   home.classList.toggle("hidden");
