@@ -930,7 +930,7 @@ function speakText(text) {
 
   // utterance.voice = questionVoice;
   utterance.rate = 1;
-  utterance.pitch = 2;
+  utterance.pitch = 0.6;
   utterance.volume = 1;
   utterance.lang = "en-US";
 
