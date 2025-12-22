@@ -929,9 +929,9 @@ function speakText(text) {
   const utterance = new SpeechSynthesisUtterance(text);
 
   // utterance.voice = questionVoice;
-  utterance.rate = 1;
-  utterance.pitch = 0.6;
-  utterance.volume = 1;
+  utterance.rate = 0.85;
+utterance.pitch = 0.9;
+utterance.volume = 0.8;
   utterance.lang = "en-US";
 
   window.speechSynthesis.speak(utterance);
