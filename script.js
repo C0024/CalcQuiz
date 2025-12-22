@@ -903,6 +903,17 @@ function randomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+function getBestVoice() {
+  const voices = speechSynthesis.getVoices();
+
+  return voices.find(v =>
+    v.lang === "en-US" &&
+    (v.name.toLowerCase().includes("google") ||
+     v.name.toLowerCase().includes("microsoft") ||
+     v.name.toLowerCase().includes("female"))
+  ) || voices[0];
+}
+
 function swap(elementIndex, randIndex, array) {
   temp = array[randIndex]; //rescued
   array[randIndex] = array[elementIndex];
@@ -928,11 +939,11 @@ function normalizeText(text) {
 function speakText(text) {
   const utterance = new SpeechSynthesisUtterance(text);
 
-  // utterance.voice = questionVoice;
+  utterance.voice = get voices();
   utterance.rate = 0.85;
 utterance.pitch = 0.9;
 utterance.volume = 0.8;
-  utterance.lang = "en-US";
+  //utterance.lang = "en-US";
 
   window.speechSynthesis.speak(utterance);
 }
