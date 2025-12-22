@@ -910,7 +910,7 @@ function getBestVoice() {
     v.lang === "en-US" &&
     (v.name.toLowerCase().includes("google") ||
      v.name.toLowerCase().includes("microsoft") ||
-     v.name.toLowerCase().includes("female"))
+     v.name.toLowerCase().includes("male"))
   ) || voices[0];
 }
 
