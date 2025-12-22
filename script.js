@@ -1110,7 +1110,7 @@ answerBtn.addEventListener("click", (e) => {
 });
 
 
-answerBtn.addEventListener("click",answer);
+//answerBtn.addEventListener("click",answer);
 
 endBtn.addEventListener("click", (e) => {
   reset();
