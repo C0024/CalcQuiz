@@ -943,10 +943,11 @@ function speakText(text) {
   // utterance.voice = questionVoice;
   utterance.voice = getBestVoice();
 
-  utterance.rate = 1;
-  utterance.pitch = 2;
-  utterance.volume = 1;
-  utterance.lang = "en-US";
+ utterance.rate = 0.85;
+utterance.pitch = 0.9;
+utterance.volume = 0.8;
+
+
 
   window.speechSynthesis.speak(utterance);
 }
