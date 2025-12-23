@@ -944,7 +944,7 @@ function speakText(text) {
   utterance.voice = getBestVoice();
 
  utterance.rate = 0.85;
-utterance.pitch = 0.9;
+utterance.pitch = 0.5;
 utterance.volume = 0.8;
 
 
