@@ -899,6 +899,18 @@ recognition.onresult = (event) => {
 //   status.textContent = "Stopped.";
 // };
 
+function getBestVoice() {
+  const voices = speechSynthesis.getVoices();
+
+  return voices.find(v =>
+    v.lang === "en-US" &&
+    (v.name.toLowerCase().includes("google") ||
+     v.name.toLowerCase().includes("microsoft") ||
+     v.name.toLowerCase().includes("female"))
+  ) || voices[0];
+}
+
+
 function randomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -929,6 +941,8 @@ function speakText(text) {
   const utterance = new SpeechSynthesisUtterance(text);
 
   // utterance.voice = questionVoice;
+  utterance.voice = getBestVoice();
+
   utterance.rate = 1;
   utterance.pitch = 2;
   utterance.volume = 1;
