@@ -903,17 +903,6 @@ function randomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-function getBestVoice() {
-  const voices = speechSynthesis.getVoices();
-
-  return voices.find(v =>
-    v.lang === "en-US" &&
-    (v.name.toLowerCase().includes("google") ||
-     v.name.toLowerCase().includes("microsoft") ||
-     v.name.toLowerCase().includes("male"))
-  ) || voices[0];
-}
-
 function swap(elementIndex, randIndex, array) {
   temp = array[randIndex]; //rescued
   array[randIndex] = array[elementIndex];
@@ -939,11 +928,11 @@ function normalizeText(text) {
 function speakText(text) {
   const utterance = new SpeechSynthesisUtterance(text);
 
-  utterance.voice = get voices();
-  utterance.rate = 0.85;
-utterance.pitch = 0.9;
-utterance.volume = 0.8;
-  //utterance.lang = "en-US";
+  // utterance.voice = questionVoice;
+  utterance.rate = 1;
+  utterance.pitch = 2;
+  utterance.volume = 1;
+  utterance.lang = "en-US";
 
   window.speechSynthesis.speak(utterance);
 }
@@ -1030,6 +1019,11 @@ function start() {
   home.classList.toggle("hidden");
 }
 
+function answer(){
+  speakText(currentQuestion.deriansword);
+  console.log(currentQuestion);
+}
+
 function askQuestion() {
   if (index >= question.length) {
     speakText("Quiz completed");
@@ -1097,20 +1091,7 @@ nextquestionBtn.addEventListener("click", (e) => {
   askQuestion();
 });
 
-startBtn.addEventListener("click", start);
-
-answerBtn.addEventListener("click", (e) => {
-  restrictClick(answerBtn, 6000);
-  speakText(currentQuestion.deriansword);
-  totalScore--;
-  //index++;
-  //remainQn--;
-  updateStatus(totalScore, remainQn);
-  askQuestion();
-});
-
-
-//answerBtn.addEventListener("click",answer);
+answerBtn.addEventListener("click",answer);
 
 endBtn.addEventListener("click", (e) => {
   reset();
