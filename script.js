@@ -926,7 +926,7 @@ function speakText(text) {
             utterance.voice = englishVoice;
         }
     }
-    
+    utterance.rate=0.8
     synth.speak(utterance);
 }
 
