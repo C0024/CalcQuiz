@@ -841,7 +841,7 @@ const question = [
 ];
 const synonymMap = {
   times: "multiply",
-  into: "multiply",
+  into: "into",
   multiplied: "multiply",
   multiply: "multiply",
 
@@ -897,19 +897,38 @@ recognition.onresult = (event) => {
 };
 // recognition.onend = () => {
 //   status.textContent = "Stopped.";
-// };
+//
 
-function getBestVoice() {
-  const voices = speechSynthesis.getVoices();
+const synth = window.speechSynthesis;
+let voices = [];
 
-  return voices.find(v =>
-    v.lang === "en-US" &&
-    (v.name.toLowerCase().includes("google") ||
-     v.name.toLowerCase().includes("microsoft") ||
-     v.name.toLowerCase().includes("female"))
-  ) || voices[0];
+function populateVoiceList() {
+    voices = synth.getVoices();
 }
 
+// Ensure voices are loaded first
+if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
+function speakText(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    
+    // Attempt to find a specific, locally available voice (e.g., for English)
+    const preferredVoice = voices.find(voice => voice.lang === 'en-US' && voice.localService);
+    
+    if (preferredVoice) {
+        utterance.voice = preferredVoice;
+    } else {
+        // Fallback: simply select the first available voice for the language
+        const englishVoice = voices.find(voice => voice.lang.startsWith('en'));
+        if (englishVoice) {
+            utterance.voice = englishVoice;
+        }
+    }
+    
+    synth.speak(utterance);
+}
 
 function randomInt(max) {
   return Math.floor(Math.random() * max);
@@ -937,20 +956,7 @@ function normalizeText(text) {
     .filter((word) => word.length > 0);
 }
 
-function speakText(text) {
-  const utterance = new SpeechSynthesisUtterance(text);
 
-  // utterance.voice = questionVoice;
-  utterance.voice = getBestVoice();
-
- utterance.rate = 0.85;
-utterance.pitch = 0.5;
-utterance.volume = 0.8;
-
-
-
-  window.speechSynthesis.speak(utterance);
-}
 
 function nextQuestion(arr) {
   if (index >= arr.length) {
